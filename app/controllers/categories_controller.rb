@@ -1,4 +1,15 @@
 class CategoriesController < ApplicationController
+
+  before_action do |controller|
+    puts "Je suis avant l'action"
+  end
+
+  after_action do |controller|
+    puts "Je suis après l'action"
+  end
+
+  around_action :around
+
   def index
     @categories = Category.all
   end
@@ -38,6 +49,12 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :slug)
+  end
+
+  def around
+    puts "aaa"
+    yield
+    puts "zzz"
   end
 
 end
