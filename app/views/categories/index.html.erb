@@ -1,0 +1,29 @@
+<h1>Catégories</h1>
+
+<table>
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Nom</td>
+    <td>Actions</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.id %></td>
+      <td><%= category.name %></td>
+      <td>
+        <%= button_to "Détails", category_path(category.id), method: :get %>
+        <%= button_to "Éditer", edit_category_path(category.id), method: :get %>
+        <%= button_to "Supprimer", category, method: :delete, form: { data: { turbo_confirm: "Êtes-vous sûr ?" } } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <a href="<%= new_category_path %>">Créer une nouvelle catégorie</a>
+</p>

@@ -1,0 +1,17 @@
+<h1>Créer une nouvelle catégorie</h1>
+
+<%= form_for @category do |f| %>
+
+  <div>
+    <label>Nom de la catégorie</label>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <label>Slug de la catégorie</label>
+    <%= f.text_area :slug %>
+  </div>
+
+  <button type="submit">Créer la catégorie</button>
+
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Éditer l'article</h1>
+
+<%= form_for @post do |f| %>
+
+  <div>
+    <label>Titre de l'article</label>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <label>Contenu de l'article</label>
+    <%= f.text_area :content %>
+  </div>
+
+  <button type="submit">Mettre à jour l'article</button>
+
+<% end %>

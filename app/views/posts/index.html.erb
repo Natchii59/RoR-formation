@@ -1,0 +1,17 @@
+<h1>Artciles du blog</h1>
+
+<% @posts.each do |post| %>
+
+  <h2><%= post.name %></h2>
+
+  <p><%= post.content %></p>
+
+  <%= button_to "Détails", post_path(post.id) %>
+  <%= button_to "Éditer", edit_post_path(post.id) %>
+  <%= button_to "Supprimer", post, method: :delete, form: { data: { turbo_confirm: "Êtes-vous sûr ?" } } %>
+
+<% end %>
+
+<p>
+  <a href="<%= new_post_path %>">Créer un nouvel article</a>
+</p>

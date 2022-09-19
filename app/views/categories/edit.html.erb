@@ -1,0 +1,17 @@
+<h1>Éditer la catégorie</h1>
+
+<%= form_for @category do |f| %>
+
+  <div>
+    <label>Titre de la catégorie</label>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <label>Contenu de la catégorie</label>
+    <%= f.text_area :slug %>
+  </div>
+
+  <button type="submit">Mettre à jour la catégorie</button>
+
+<% end %>
