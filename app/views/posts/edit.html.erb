@@ -1,6 +1,6 @@
 <h1>Éditer l'article</h1>
 
-<% if @post.invalid? %>
+<% if @post.errors.any? %>
   <% @post.errors.full_messages.each do |message| %>
     <div class="alert alert-danger">
       <%= message %>
@@ -13,6 +13,11 @@
   <div class="mb-3">
     <label class="form-label">Titre de l'article</label>
     <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">URL de l'article</label>
+    <%= f.text_field :slug, class: "form-control" %>
   </div>
 
   <div class="mb-3">

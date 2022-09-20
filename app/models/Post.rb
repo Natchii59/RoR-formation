@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
 
-  validates :name, name: { message: "ERROR" }
-  validates :content, name: true
+  include Sluggable
 
   def as_json(options = nil)
     super(only: [:id, :name, :created_at])
