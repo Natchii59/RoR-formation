@@ -1,6 +1,6 @@
 <h1>Catégories</h1>
 
-<table>
+<table class="table">
   <thead>
   <tr>
     <td>ID</td>
@@ -14,10 +14,10 @@
     <tr>
       <td><%= category.id %></td>
       <td><%= category.name %></td>
-      <td>
-        <%= button_to "Détails", category_path(category.id), method: :get %>
-        <%= button_to "Éditer", edit_category_path(category.id), method: :get %>
-        <%= button_to "Supprimer", category, method: :delete, form: { data: { turbo_confirm: "Êtes-vous sûr ?" } } %>
+      <td class="d-flex gap-1">
+        <%= button_to "Détails", category_path(category.id), method: :get, class: "btn btn-primary" %>
+        <%= button_to "Éditer", edit_category_path(category.id), method: :get, class: "btn btn-success" %>
+        <%= button_to "Supprimer", category, method: :delete, form: { data: { turbo_confirm: "Êtes-vous sûr ?" } }, class: "btn btn-danger" %>
       </td>
     </tr>
   <% end %>
@@ -25,5 +25,5 @@
 </table>
 
 <p>
-  <a href="<%= new_category_path %>">Créer une nouvelle catégorie</a>
+  <a href="<%= new_category_path %>" class="btn btn-success">Créer une nouvelle catégorie</a>
 </p>

@@ -2,16 +2,16 @@
 
 <%= form_for @post do |f| %>
 
-  <div>
-    <label>Titre de l'article</label>
-    <%= f.text_field :name %>
+  <div class="mb-3">
+    <label class="form-label">Titre de l'article</label>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div>
-    <label>Contenu de l'article</label>
-    <%= f.text_area :content %>
+  <div class="mb-3">
+    <label class="form-label">Contenu de l'article</label>
+    <%= f.text_area :content, class: "form-control" %>
   </div>
 
-  <button type="submit">Créer l'article</button>
+  <button type="submit" class="btn btn-success">Créer l'article</button>
 
 <% end %>
