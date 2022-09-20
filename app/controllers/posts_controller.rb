@@ -22,8 +22,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update post_params
-    redirect_to posts_path, flash: { success: "Article modifié avec succès" }
+    if @post.update post_params
+      redirect_to posts_path, flash: { success: "Article modifié avec succès" }
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def new
