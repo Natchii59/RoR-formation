@@ -7,8 +7,8 @@
     <%= post.tags.map(&:name).join(", ") %>
   </td>
   <td class="d-flex gap-1">
-    <%= button_to "Détails", post_path(post.id), method: :get, class: "btn btn-primary" %>
-    <%= button_to "Éditer", edit_post_path(post.id), method: :get, class: "btn btn-success" %>
+    <%= link_to "Détails", post, class: "btn btn-primary" %>
+    <%= link_to "Éditer", edit_post_path(post), class: "btn btn-success" %>
     <%= button_to "Supprimer", post, method: :delete, form: { data: { turbo_confirm: "Êtes-vous sûr ?" } }, class: "btn btn-danger" %>
   </td>
 </tr>
