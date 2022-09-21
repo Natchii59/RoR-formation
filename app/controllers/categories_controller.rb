@@ -4,22 +4,34 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @categories }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @category }
+    end
   end
 
   def edit
   end
 
   def update
-    @category.update category_params
-    redirect_to categories_path
+    if @category.update category_params
+      redirect_to categories_path, flash: { success: "Catégorie modifiée avec succès" }
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @category.destroy
-    redirect_to categories_path
+    redirect_to categories_path, flash: { success: "Catégorie supprimée avec succès" }
   end
 
   def new
@@ -27,8 +39,12 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.create category_params
-    redirect_to category_path category.id
+    @category = Category.create category_params
+    if !@category.errors.any?
+      redirect_to category_path(@category.id), flash: { success: "Catégorie créée avec succès" }
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

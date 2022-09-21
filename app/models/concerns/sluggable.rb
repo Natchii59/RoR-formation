@@ -4,7 +4,7 @@ module Sluggable
 
   included do
     before_validation :set_default_slug, on: [:create, :update]
-    validates :slug, format: { with: /\A[a-z0-9\-]+\z/ }, uniqueness: true
+    validates :slug, on: [:create, :update], format: { with: /\A[a-z0-9\-]+\z/ }, uniqueness: true
 
     private
 

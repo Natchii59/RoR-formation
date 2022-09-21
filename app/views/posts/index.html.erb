@@ -1,4 +1,4 @@
-<h1>Artciles du blog</h1>
+<h1>Articles du blog</h1>
 
 <table class="table">
   <thead>
@@ -6,6 +6,8 @@
     <td>ID</td>
     <td>Nom</td>
     <td>Contenu</td>
+    <td>Catégorie</td>
+    <td>Tags</td>
     <td>Actions</td>
   </tr>
   </thead>
@@ -16,6 +18,10 @@
       <td><%= post.id %></td>
       <td><%= post.name %></td>
       <td><%= post.content %></td>
+      <td><%= post.category.name %></td>
+      <td>
+        <%= post.tags.map(&:name).join(", ") %>
+      </td>
       <td class="d-flex gap-1">
         <%= button_to "Détails", post_path(post.id), method: :get, class: "btn btn-primary" %>
         <%= button_to "Éditer", edit_post_path(post.id), method: :get, class: "btn btn-success" %>

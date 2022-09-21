@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.online.all
+    @posts = Post.includes(:category, :tags).all
 
     respond_to do |format|
       format.html
@@ -34,8 +34,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
-    redirect_to post_path(post.id), flash: { success: "Article créé avec succès" }
+    @post = Post.create post_params
+    if !@post.errors.any?
+      redirect_to post_path(@post.id), flash: { success: "Article créé avec succès" }
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
