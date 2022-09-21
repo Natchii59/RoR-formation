@@ -1,7 +1,17 @@
-<h1><%= @post.name %></h1>
+<% content_for :title, @post.name %>
 
-<p><%= @post.content %></p>
+<% content_for :content do %>
+  <h1><%= @post.name %></h1>
 
-<p>
-  <a href="<%= posts_path %>" class="btn btn-primary">Retour aux articles</a>
-</p>
+  <p><%= @post.content %></p>
+
+  <p>
+    <a href="<%= posts_path %>" class="btn btn-primary">Retour aux articles</a>
+  </p>
+<% end %>
+
+<% content_for :sidebar do %>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cupiditate eligendi illo iure mollitia nisi nostrum, officia quaerat quam quisquam sapiente sit ut velit! Adipisci aliquid aspernatur assumenda consectetur culpa delectus distinctio dolore doloremque dolores earum eius enim eos error esse explicabo id itaque, iusto laborum magni nesciunt nihil non nulla odio placeat quae quod quos, rem similique sit tempore velit veniam vero voluptas? Atque aut autem, cupiditate delectus dolorem doloribus eius facere iusto, nemo nesciunt omnis qui ratione repudiandae! A ad aperiam assumenda atque cum dolore ducimus earum eveniet expedita id, minus molestias nemo nisi quaerat quia quod voluptate?
+<% end %>
+
+<%= render template: 'layouts/sidebar' %>

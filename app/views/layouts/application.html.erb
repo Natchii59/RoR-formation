@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>RoRFormation</title>
+  <title><%= content_for?(:title) ? yield(:title) : "RoR-Formation" %></title>
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
@@ -23,6 +23,7 @@
   <% flash.each do |name, msg| %>
     <div class="alert alert-<%= name %>"><%= msg %></div>
   <% end %>
+
   <%= yield %>
 </div>
 </body>
